@@ -1,12 +1,9 @@
-export type Video = {
+export type Channel = {
   id: string;
   snippet: {
-    publishedAt: string;
-    channelId: string;
     title: string;
     description: string;
-    channelTitle: string;
-    tags: string[];
+    customUrl: string;
     thumbnails: {
       default: {
         url: string;
@@ -17,17 +14,11 @@ export type Video = {
       high: {
         url: string;
       };
-      standard: {
-        url: string;
-      };
-      maxres: {
-        url: string;
-      };
     };
   };
   statistics: {
     viewCount: string;
-    likeCount: string;
-    commentCount: string;
+    subscriberCount: string;
+    videoCount: string;
   };
 };

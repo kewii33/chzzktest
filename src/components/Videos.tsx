@@ -39,7 +39,15 @@ export default function Videos({ params }: { params: { keyword: string } }) {
   return (
     <div>
       <div>
-        <p>{keyword ? `${decodeKeyword}` : "핫트렌드"}</p>
+        <p>
+          {keyword ? (
+            <p>
+              <strong>{decodeKeyword}</strong>검색 결과입니다.
+            </p>
+          ) : (
+            "핫트렌드"
+          )}
+        </p>
         {isLoading && <div>로딩중입니다.</div>}
         {error && <p>에러가 발생했습니다.</p>}
         {keyword ? (
@@ -54,6 +62,8 @@ export default function Videos({ params }: { params: { keyword: string } }) {
           </div>
         ) : (
           <div>
+            {isLoadingTrend && <div>로딩중입니다.</div>}
+            {errorTrend && <p>에러가 발생했습니다.</p>}
             {videosTrend && (
               <ul>
                 {videosTrend.map((video) => (

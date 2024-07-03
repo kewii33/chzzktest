@@ -1,11 +1,8 @@
-"use client";
-
-import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import React, { FormEvent, useEffect, useState } from "react";
-import { BsYoutube, BsSearch } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 
-export default function Header() {
+export default function SearchInput() {
   const [text, setText] = useState("");
   const router = useRouter();
   const { keyword } = useParams<{ keyword: string }>();
@@ -20,13 +17,7 @@ export default function Header() {
     } else setText("");
   }, [keyword, decodeKeyword]);
   return (
-    <header>
-      <Link href="/">
-        <div>
-          <BsYoutube />
-          <h1>{"BlockTube"}</h1>
-        </div>
-      </Link>
+    <div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -38,12 +29,6 @@ export default function Header() {
           <BsSearch />
         </button>
       </form>
-      {/* <nav>
-        <Link href="/">home</Link>
-        <Link href="/about">about</Link>
-        <Link href="/posts">posts</Link>
-        <Link href="/contact">contact</Link>
-      </nav> */}
-    </header>
+    </div>
   );
 }
