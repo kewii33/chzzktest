@@ -24,6 +24,7 @@ export default function SearchInput() {
           placeholder="Search..."
           value={text}
           onChange={(e) => setText(e.target.value)}
+          className=""
         ></input>
         <button>
           <BsSearch />

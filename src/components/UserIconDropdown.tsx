@@ -57,7 +57,7 @@ export default function UserIconDropdown() {
             마이페이지
           </DropdownItem>
           <DropdownItem key="logout" color="danger" onClick={signOut}>
-            Log Out
+            로그아웃
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

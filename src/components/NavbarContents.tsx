@@ -69,37 +69,26 @@ export default function NavbarContents() {
   //   saveUserData();
   // }
 
-  const signOut = async () => {
-    await clientSupabase.auth.signOut();
-    queryClient.invalidateQueries({
-      queryKey: [USER_DATA_QUERY_KEY],
-    });
-    alert("로그아웃 성공");
-    await router.replace("/");
-  };
-
-  console.log(user);
+  // console.log(user);
 
   return (
-    <Navbar className="py-[20px] h-auto">
-      <NavbarBrand>
-        <Link href="/">
-          <div className="flex">
-            <BsYoutube />
-            <h1>{"BlockTube"}</h1>
-          </div>
-        </Link>
-      </NavbarBrand>
-      <NavbarContent className="flex">
-        <NavbarItem>
+    <header className="flex justify-center shrink-0 py-[10px] h-auto sticky z-50 top-0 inset-x-0 backdrop-blur-lg bg-white bg-opacity-70 w-full">
+      <div className="flex items-center justify-between w-full ml-8 mr-8">
+        <div>
+          <Link href="/">
+            <div className="flex items-center">
+              <BsYoutube />
+              <h1 className="ml-2">{"BlockTube"}</h1>
+            </div>
+          </Link>
+        </div>
+        <div>
           <SearchInput />
-        </NavbarItem>
-      </NavbarContent>
-      <div>
-        <NavbarContent>
+        </div>
+        <div className="flex items-center">
           {isLoggedIn ? <UserIconDropdown /> : <SignInIconDropdown />}
-        </NavbarContent>
+        </div>
       </div>
-    </Navbar>
+    </header>
   );
 }

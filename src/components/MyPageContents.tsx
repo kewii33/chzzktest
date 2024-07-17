@@ -3,6 +3,7 @@
 import { useGetUserDataQuery } from "@/hooks/useQueries/useUserQuery";
 import Image from "next/image";
 import MyPageTabs from "./MyPageTabs";
+import { fullTimeAgo } from "@/utils/fullTimeAgo";
 
 export default function MyPageContents() {
   const {
@@ -14,33 +15,27 @@ export default function MyPageContents() {
   } = useGetUserDataQuery();
 
   const thumbnailUrl = user?.avatar_url as string;
+  const userCreateAt = user?.created_at as string;
 
   return (
     <div>
       <div className="flex">
         <div>
           <Image
-            width={100}
-            height={100}
+            width={50}
+            height={50}
             alt="유저 썸네일"
             src={thumbnailUrl}
+            className="rounded-full"
           />
         </div>
         <div>
           <p>{user?.full_name}</p>
           <p>{user?.email}</p>
-          <p>{user?.created_at}</p>
+          <p>{fullTimeAgo(userCreateAt)}</p>
         </div>
       </div>
       <div>
-        {/* <ul className="flex gap-4">
-          <li>
-            <p>좋아요한 동영상</p>
-          </li>
-          <li>
-            <p>차단한 동영상</p>
-          </li>
-        </ul> */}
         <MyPageTabs />
       </div>
       <div></div>

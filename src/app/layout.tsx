@@ -61,7 +61,7 @@ export default async function RootLayout({
             <HydrationBoundary state={dehydrate(queryClient)}>
               <Suspense>
                 <Navbar />
-                <main>{children}</main>
+                {children}
                 <Footer />
               </Suspense>
             </HydrationBoundary>
